@@ -31,7 +31,9 @@ import java.time.Duration;
 
 import static io.atomix.core.map.impl.ConsistentMapOperations.GET;
 import static io.atomix.core.map.impl.ConsistentMapOperations.PUT;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 
@@ -39,6 +41,19 @@ import static org.mockito.Mockito.mock;
  * Consistent map service test.
  */
 public class ConsistentMapServiceTest {
+
+  @Test
+  public void testSizeAtInit() {
+    ConsistentMapService mapService = new ConsistentMapService();
+    assertEquals(mapService.size(), 0);
+  }
+
+  @Test
+  public void isInitAtEmpty() {
+    ConsistentMapService mapService = new ConsistentMapService();
+    assertTrue(mapService.isEmpty());
+
+  }
 
   @Test
   @SuppressWarnings("unchecked")
